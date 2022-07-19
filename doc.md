@@ -25,6 +25,9 @@ sudo nano ansible.cfg
 inventory = /root/ansible/hosts
 host_key_checknig = false 
 ```
+___
+## ANSIBLE HOSTS
+
 ```
 mkdir ansible
 ```
@@ -93,4 +96,8 @@ ansible all -m ping
 ansible all -i hosts -m ping
 ```
 ____
-
+## INVENTORY GROUPS
+### for one of them 
+```
+ansible client01 -i hosts -m ping
+```
