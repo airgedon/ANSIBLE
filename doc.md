@@ -115,5 +115,26 @@ client3 ansible_host=__IP_adress___   ansible_user=root    ansible_password=__Pa
 ```
 > then...
 ```
-ansible client01 -i hosts -m ping
+ansible firewall -i hosts -m ping
+```
+#### How to ping 2 and more groups once ?
+
+> in hosts file
+```
+[firewall]
+client1 ansible_host=__IP_adress___   ansible_user=root    ansible_password=__Password__
+
+[gunicorn]
+client2 ansible_host=__IP_adress___   ansible_user=root    ansible_password=__Password__
+
+[nginx]
+client3 ansible_host=__IP_adress___   ansible_user=root    ansible_password=__Password__
+
+[all_groups:children]
+firewall
+nginx
+```
+> then run
+```
+ansible all_groups -i hosts -m ping
 ```
