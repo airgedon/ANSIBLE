@@ -101,3 +101,19 @@ ____
 ```
 ansible client01 -i hosts -m ping
 ```
+> edit hosts file
+```
+sudo nano hosts
+```
+```
+[firewall]
+client1 ansible_host=__IP_adress___   ansible_user=root    ansible_password=__Password__
+
+[gunicorn]
+client2 ansible_host=__IP_adress___   ansible_user=root    ansible_password=__Password__
+client3 ansible_host=__IP_adress___   ansible_user=root    ansible_password=__Password__
+```
+> then...
+```
+ansible client01 -i hosts -m ping
+```
