@@ -148,9 +148,92 @@ ansible all -i hosts -m setup:
 ```
 ansible all -i hosts -m file "path=/root/ansible-file.txt state=touch"
 ```
----
+> Error 
+```
+client01 | FAILED! => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "msg": "Error, could not touch target: [Errno 13] Permission denied: b'/root/ansible-file2.txt'",
+    "path": "/root/ansible-file2.txt"
+}
+```
+> to fix that (-b become, -a argument ):
+```
+ansible all -i hosts -m file -a "path=/root/ansible-file2.txt state=touch" -b
+```
+>Error
+```
+client01 | FAILED! => {
+    "msg": "Missing sudo password"
+}
+```
+>to fix in client server:
+```
 visudo
+```
 ```
 utest  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
----
+______IP_adress___
+>to copy file:
+```
+ansible all -i hosts -m copy -a "src=file435 dest=/home mode=777" -b
+```
+#VARIABLS
+```
+mkdir group_vars
+```
+```
+cd group_vars/
+```
+```
+touch firewall
+```
+```
+touch all_groups
+```
+```
+sudo nano firewall 
+```
+```
+ansible_host: __IP_adress___
+ansible_user: root
+ansible_password: __Password__
+
+```
+```
+sudo nano all_groups
+```
+```
+ansible_user: root
+ansible_password: __Password__
+```
+```
+cd ..
+```
+```
+sudo nano hosts
+```
+```
+[firewall]
+client1 
+
+[gunicorn]
+client2 ansible_host=__IP_adress___   
+
+[nginx]
+client3 ansible_host=__IP_adress___   
+
+[all_groups:children]
+firewall
+nginx
+```
+```
+ansible all -i hosts -m ping
+```
+> Done
+```
+ansible all -i /root/ansible/hosts -m debug -a "var=ansible_host"
+```
