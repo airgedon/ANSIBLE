@@ -326,3 +326,28 @@ ___
 [Docs](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/)
 
 ## Playbook Vars
+> install several packages
+```
+- name: Ping Servers
+  hosts: all
+  become: yes
+
+  tasks:
+  
+  - name: Task ping
+    ping:
+
+  - name: Install apache2
+    apt:
+      pkg: 
+        - apache2
+        - htop
+        - tree
+      state: present
+
+  - name: copy File
+    copy:
+      src: ./file111
+      dest: /home/
+      mode: 777
+```
