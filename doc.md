@@ -237,3 +237,43 @@ ansible all -i hosts -m ping
 ```
 ansible all -i /root/ansible/hosts -m debug -a "var=ansible_host"
 ```
+# Playbook
+> in ansible folder 
+```
+touch ping.yml
+```
+```
+sudo nano ping.yml
+```
+```
+- name: Ping Servers
+  hosts: all
+  become: yes
+
+  tasks:
+  
+  - name: Task ping
+    ping:
+
+```
+```
+ansible-playbook -i hosts ping.yml 
+```
+___
+```
+- name: Ping Servers
+  hosts: all
+  become: yes
+
+  tasks:
+  
+  - name: Task ping
+    ping:
+
+  - name: Update cache
+    apt:
+      update_cache: yes
+  - name: Upgrade
+    apt:
+      upgrade: yes
+```
