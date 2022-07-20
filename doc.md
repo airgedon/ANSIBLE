@@ -138,3 +138,19 @@ nginx
 ```
 ansible all_groups -i hosts -m ping
 ```
+___
+#MODULES
+> to see all information about client , type:
+```
+ansible all -i hosts -m setup:
+```
+> to create file in client servers :
+```
+ansible all -i hosts -m file "path=/root/ansible-file.txt state=touch"
+```
+---
+visudo
+```
+utest  ALL=(ALL:ALL) NOPASSWD:ALL
+```
+---
