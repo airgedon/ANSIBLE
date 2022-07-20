@@ -374,3 +374,31 @@ ___
       pkg: "{{packages}}"
       state: present
 ```
+```
+- name: Ping Servers
+  hosts: all
+  become: yes
+
+  vars:
+    packages:
+             - htop
+             - tree
+             - zsh
+    file_src: file111
+    file_dest: /srv
+
+  tasks:
+  
+  - name: Task ping
+    ping:
+
+  - name: Install apache2
+    apt:
+      pkg: "{{packages}}"
+      state: present
+
+  - name: Copy File
+    copy:
+      src: "{{file_src}}"
+      dest: "{{file_dest}}"
+```
