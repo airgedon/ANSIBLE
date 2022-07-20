@@ -324,3 +324,5 @@ ___
       mode: 0777
 ```
 [Docs](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/)
+
+## Playbook Vars
