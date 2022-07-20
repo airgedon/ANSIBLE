@@ -301,3 +301,25 @@ ___
       pkg: apache2
       state: present
 ```
+> copy file
+```
+- name: Ping Servers
+  hosts: all
+  become: yes
+
+  tasks:
+  
+  - name: Task ping
+    ping:
+
+  - name: Install apache2
+    apt:
+      pkg: apache2
+      state: present
+
+  - name: copy File
+    copy:
+      src: ./file111
+      dest: /home/
+      mode: 777
+```
