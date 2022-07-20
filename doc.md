@@ -352,3 +352,25 @@ ___
       mode: 777
 ```
 ### Yaml format doesn`t like tabs
+> after
+```
+- name: Ping Servers
+  hosts: all
+  become: yes
+
+  vars:
+    packages:
+             - htop
+             - tree
+             - zsh
+
+  tasks:
+  
+  - name: Task ping
+    ping:
+
+  - name: Install apache2
+    apt:
+      pkg: "{{packages}}"
+      state: present
+```
