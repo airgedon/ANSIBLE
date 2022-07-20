@@ -1,4 +1,4 @@
-### Ansible Set Up
+# Ansible Set Up
 ---
 ```
 cat /etc/os-release
@@ -139,7 +139,7 @@ nginx
 ansible all_groups -i hosts -m ping
 ```
 ___
-# MODULES
+## MODULES
 > to see all information about client , type:
 ```
 ansible all -i hosts -m setup:
