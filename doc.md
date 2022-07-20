@@ -321,5 +321,5 @@ ___
     copy:
       src: ./file111
       dest: /home/
-      mode: 777
+      mode: 0777
 ```
