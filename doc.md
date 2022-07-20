@@ -139,7 +139,7 @@ nginx
 ansible all_groups -i hosts -m ping
 ```
 ___
-#MODULES
+# MODULES
 > to see all information about client , type:
 ```
 ansible all -i hosts -m setup:
@@ -176,7 +176,7 @@ visudo
 ```
 utest  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
-______IP_adress___
+
 >to copy file:
 ```
 ansible all -i hosts -m copy -a "src=file435 dest=/home mode=777" -b
