@@ -245,6 +245,7 @@ touch ping.yml
 ```
 sudo nano ping.yml
 ```
+> ping all servers
 ```
 - name: Ping Servers
   hosts: all
@@ -260,6 +261,7 @@ sudo nano ping.yml
 ansible-playbook -i hosts ping.yml 
 ```
 ___
+> Update and upgrade
 ```
 - name: Ping Servers
   hosts: all
@@ -276,4 +278,26 @@ ___
   - name: Upgrade
     apt:
       upgrade: yes
+```
+> install Apache2
+```
+- name: Ping Servers
+  hosts: all
+  become: yes
+
+  tasks:
+  
+  - name: Task ping
+    ping:
+
+  - name: Update cache
+    apt:
+      update_cache: yes
+  - name: Upgrade
+    apt:
+      upgrade: yes
+  - name: Install apache2
+    apt:
+      pkg: apache2
+      state: present
 ```
