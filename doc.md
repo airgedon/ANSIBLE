@@ -568,3 +568,46 @@ ___
       msg: "Linux: {{ansible_distribution}} Version: {{ansible_distribution_version}}"
 
 ```
+```
+ansible firewall -i hosts -m setup
+```
+```
+- name: Messages
+  hosts: firewall
+  become: yes
+
+  vars:
+    slovo1: HOME
+    slovo2: in
+    mesto: USA
+
+  tasks:
+
+  - name: Print Vars
+    debug: 
+      var: slovo1
+
+  - debug:
+      msg: "MY home is in {{mesto}}"	
+
+  - debug:
+      msg: "MY {{slovo1}} is {{slovo2}} {{mesto}}"
+
+  - set_fact:
+       message:  "MY {{slovo1}} is {{slovo2}} {{mesto}}"
+
+  - debug:
+      var: message
+
+  - debug:
+      var: ansible_distribution_version
+
+  - debug:
+      msg: "Linux: {{ansible_distribution}} Version: {{ansible_distribution_version}}"
+
+  - shell: id client1
+    register: client_groups
+    
+  - debug:
+      msg: "Client1 in Groups: {{client_groups}}"
+```
