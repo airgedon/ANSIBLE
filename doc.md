@@ -560,4 +560,11 @@ ___
 
   - debug:
       var: message
+
+  - debug:
+      var: ansible_distribution_version
+
+  - debug:
+      msg: "Linux: {{ansible_distribution}} Version: {{ansible_distribution_version}}"
+
 ```
