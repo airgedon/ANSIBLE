@@ -533,3 +533,31 @@ ___
   - debug:
       msg: "MY home is in {{mesto}}"
 ```
+```
+- name: Messages
+  hosts: firewall
+  become: yes
+
+  vars:
+    slovo1: HOME
+    slovo2: in
+    mesto: USA
+
+  tasks:
+
+  - name: Print Vars
+    debug: 
+      var: slovo1
+
+  - debug:
+      msg: "MY home is in {{mesto}}"	
+
+  - debug:
+      msg: "MY {{slovo1}} is {{slovo2}} {{mesto}}"
+
+  - set_fact:
+       message:  "MY {{slovo1}} is {{slovo2}} {{mesto}}"
+
+  - debug:
+      var: message
+```
