@@ -402,3 +402,22 @@ ___
       src: "{{file_src}}"
       dest: "{{file_dest}}"
 ```
+```
+- name: Loops
+  hosts: all
+  become: yes
+
+
+  tasks:
+
+  - name: Create Folder
+    file: 
+      path: "/home/{{item}}"
+      state: directory
+    loop:
+      - dir1
+      - dir2
+```
+```
+ansible-playbook -i hosts play1.yml
+```
