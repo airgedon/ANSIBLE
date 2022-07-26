@@ -484,3 +484,31 @@ nginx
 ```
 > to create users and groups
 ___
+> to create different users for each server 
+```
+- name: Create User
+  hosts: all
+  become: yes
+
+
+  tasks:
+
+  - name: Create Groups
+    group:
+      name: "{{item}}"
+      state: present
+    loop:
+      - dev
+      - test
+
+  - name: Create users
+    user:
+      name: "{{item.clientname}}"
+      shell: /bin/bash
+      groups: dev, test
+      append: yes
+      home: "/home/{{item.homedir}}" 
+    with_items:
+       - {clientname: client1, homedir: client1}
+       - {clientname: client2, homedir: client2}
+```
