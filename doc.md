@@ -513,3 +513,23 @@ ___
        - {clientname: client2, homedir: client2}
 ```
 ## DEBUG & MESSAGE
+> display messages
+```
+- name: Messages
+  hosts: firewall
+  become: yes
+
+  vars:
+    slovo1: HOME
+    slovo2: in
+    mesto: USA
+
+  tasks:
+
+  - name: Print Vars
+    debug: 
+      var: slovo1
+
+  - debug:
+      msg: "MY home is in {{mesto}}"
+```
