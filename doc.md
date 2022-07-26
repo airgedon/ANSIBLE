@@ -421,3 +421,23 @@ ___
 ```
 ansible-playbook -i hosts play1.yml
 ```
+___
+```
+- name: Loops
+  hosts: all
+  become: yes
+
+
+  tasks:
+
+  - name: Create Folder
+    file: 
+      path: "/home/{{item}}"
+      state: directory
+    loop:
+      - dir1
+      - dir2
+```
+```
+id test1
+```
