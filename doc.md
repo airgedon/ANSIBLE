@@ -611,3 +611,4 @@ ansible firewall -i hosts -m setup
   - debug:
       msg: "Client1 in Groups: {{client_groups}}"
 ```
+## BLOCKS & WHEN
