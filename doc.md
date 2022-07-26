@@ -441,3 +441,46 @@ ___
 ```
 id test1
 ```
+___
+> at first edit inventories (hosts file)
+```
+[firewall]
+client1 user_client=client01
+
+[gunicorn]
+client2 ansible_host=__IP_adress___   user_client=client02
+
+[nginx]
+client3 ansible_host=__IP_adress___   user_client=client03
+
+[all_groups:children]
+firewall
+nginx
+```
+```
+- name: Create User
+  hosts: all
+  become: yes
+
+
+  tasks:
+
+  - name: Create Groups
+    group:
+      name: "{{item}}"
+      state: present
+    loop:
+      - dev
+      - test
+
+  - name: Create users
+    user:
+      name: "{{user_client}}"
+      shell: /bin/bash
+      groups: dev, test
+      append: yes
+      home: /home/test1
+
+```
+> to create users and groups
+___
