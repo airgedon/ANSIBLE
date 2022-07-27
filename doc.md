@@ -612,3 +612,38 @@ ansible firewall -i hosts -m setup
       msg: "Client1 in Groups: {{client_groups}}"
 ```
 ## BLOCKS & WHEN
+```
+- name: Test Blocks
+  hosts: all
+  become: yes
+
+  vars:
+
+
+  tasks:
+
+  - block:
+
+    - name: Install Packages
+      apt: 
+        pkg:
+          - zsh
+          - nmon
+          - htop
+        state: present
+
+
+    - name: Create Folder
+      file: 
+        path: /srv/folder21
+        state: directory
+
+    when: user_client == "client01"
+
+
+  - name: Copy File
+    copy:
+      src: file822
+      dest: /srv/
+    when: user_client == "client03" 
+```
