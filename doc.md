@@ -697,3 +697,9 @@ sudo nano templates.yml
 ```
 ansible-galaxy init first_setup
 ```
+```
+ls
+```
+```
+cd first_setup
+```
