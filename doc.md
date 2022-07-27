@@ -694,4 +694,6 @@ sudo nano templates.yml
 ```
 ## ROLES
 
-
+```
+ansible-galaxy init first_setup
+```
