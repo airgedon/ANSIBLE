@@ -647,3 +647,4 @@ ansible firewall -i hosts -m setup
       dest: /srv/
     when: user_client == "client03" 
 ```
+## TEMPLATE
