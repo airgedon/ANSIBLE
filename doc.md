@@ -714,4 +714,4 @@ sudo nano side.yml
           - first_setup
           - web-project
 ```
-
+[Galaxy Ansinble](https://galaxy.ansible.com/)
