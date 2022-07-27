@@ -648,3 +648,47 @@ ansible firewall -i hosts -m setup
     when: user_client == "client03" 
 ```
 ## TEMPLATE
+```
+sudo mv file822 file822.j2 
+```
+```
+Host: {{user_client}}
+User: {{inv_user}}
+Position: {{position}}
+```
+>hosts file
+```
+[firewall]
+client1 user_client=client01 inv_user=cli1
+
+[gunicorn]
+client2 ansible_host=__IP_adress___   user_client=client02 inv_user=cli2
+
+[nginx]
+client3 ansible_host=__IP_adress___   user_client=client03 inv_user=cli3
+
+[all_groups:children]
+firewall
+nginx
+```
+```
+sudo nano templates.yml
+```
+```
+- name: Test Blocks
+  hosts: all
+  become: yes
+
+  vars:
+
+  - position: boss
+
+  tasks:
+
+  - name: Copy File
+    template:
+      src: ./file822.j2
+      dest: /home/config
+      mode: 0777
+
+```
