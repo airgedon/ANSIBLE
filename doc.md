@@ -703,3 +703,14 @@ ls
 ```
 cd first_setup
 ```
+```
+sudo nano side.yml
+```
+```
+- name: First Install + Web-Project
+  hosts: client01
+  gather_facts: yes
+  roles:
+          - first_setup
+          - web-project
+```
