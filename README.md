@@ -1,7 +1,8 @@
 # Ansible Set Up
 ---
 ```
-cat /etc/os-release **Warning!**
+cat /etc/os-release **Warning** 
+> **Warning**  Если вы видете как в примере ниже ковычки то пишете без них, то есть:
 ```
 ```
 update-alternatives --install /usr/bin/python python /usr/bin/python3 2
