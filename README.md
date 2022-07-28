@@ -1,7 +1,7 @@
 # Ansible Set Up
 ---
 ```
-cat /etc/os-release
+cat /etc/os-release **Warning!**
 ```
 ```
 update-alternatives --install /usr/bin/python python /usr/bin/python3 2
