@@ -246,7 +246,7 @@ touch ping.yml
 sudo nano ping.yml
 ```
 > ping all servers
-```
+```yaml
 - name: Ping Servers
   hosts: all
   become: yes
@@ -262,7 +262,7 @@ ansible-playbook -i hosts ping.yml
 ```
 ___
 > Update and upgrade
-```
+```yaml
 - name: Ping Servers
   hosts: all
   become: yes
@@ -280,7 +280,7 @@ ___
       upgrade: yes
 ```
 > install Apache2
-```
+```yaml
 - name: Ping Servers
   hosts: all
   become: yes
@@ -302,7 +302,7 @@ ___
       state: present
 ```
 > copy file
-```
+```yaml
 - name: Ping Servers
   hosts: all
   become: yes
@@ -327,7 +327,7 @@ ___
 
 ## Playbook Vars
 > install several packages
-```
+```yaml
 - name: Ping Servers
   hosts: all
   become: yes
@@ -353,7 +353,7 @@ ___
 ```
 ### Yaml format doesn`t like tabs
 > after
-```
+```yaml
 - name: Ping Servers
   hosts: all
   become: yes
@@ -374,7 +374,7 @@ ___
       pkg: "{{packages}}"
       state: present
 ```
-```
+```yaml
 - name: Ping Servers
   hosts: all
   become: yes
@@ -402,7 +402,7 @@ ___
       src: "{{file_src}}"
       dest: "{{file_dest}}"
 ```
-```
+```yaml
 - name: Loops
   hosts: all
   become: yes
@@ -422,7 +422,7 @@ ___
 ansible-playbook -i hosts play1.yml
 ```
 ___
-```
+```yaml
 - name: Loops
   hosts: all
   become: yes
@@ -457,7 +457,7 @@ client3 ansible_host=__IP_adress___   user_client=client03
 firewall
 nginx
 ```
-```
+```yaml
 - name: Create User
   hosts: all
   become: yes
@@ -485,7 +485,7 @@ nginx
 > to create users and groups
 ___
 > to create different users for each server 
-```
+```yaml
 - name: Create User
   hosts: all
   become: yes
@@ -514,7 +514,7 @@ ___
 ```
 ## DEBUG & MESSAGE
 > display messages
-```
+```yaml
 - name: Messages
   hosts: firewall
   become: yes
@@ -533,7 +533,7 @@ ___
   - debug:
       msg: "MY home is in {{mesto}}"
 ```
-```
+```yaml
 - name: Messages
   hosts: firewall
   become: yes
@@ -571,7 +571,7 @@ ___
 ```
 ansible firewall -i hosts -m setup
 ```
-```
+```yaml
 - name: Messages
   hosts: firewall
   become: yes
@@ -612,7 +612,7 @@ ansible firewall -i hosts -m setup
       msg: "Client1 in Groups: {{client_groups}}"
 ```
 ## BLOCKS & WHEN
-```
+```yaml
 - name: Test Blocks
   hosts: all
   become: yes
@@ -674,7 +674,7 @@ nginx
 ```
 sudo nano templates.yml
 ```
-```
+```yaml
 - name: Test Blocks
   hosts: all
   become: yes
@@ -706,7 +706,7 @@ cd first_setup
 ```
 sudo nano side.yml
 ```
-```
+```yaml
 - name: First Install + Web-Project
   hosts: client01
   gather_facts: yes
